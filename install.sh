@@ -6,7 +6,7 @@
 # - Boot your Chromebook but do not log in.
 # - Press CTRL+ALT+FORWARDARROW (CTRL+ALT+F2).
 # - Login as user chronos, no password is needed.
-# - curl -s xxx | sudo bash
+# - curl -s https://raw.githubusercontent.com/longsleep/install-pixel/master/install.sh | sudo bash
 
 usage()
 {
@@ -222,7 +222,7 @@ then
 fi
 mount -t ext4 ${target_rootfs} /tmp/urfs
 
-wget -O - $tar_file | tar xzvvp -C /tmp/urfs/
+wget -O - $tar_file | tar xzp -C /tmp/urfs/
 
 mount -o bind /proc /tmp/urfs/proc
 mount -o bind /dev /tmp/urfs/dev
