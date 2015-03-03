@@ -6,7 +6,8 @@
 # - Boot your Chromebook but do not log in.
 # - Press CTRL+ALT+FORWARDARROW (CTRL+ALT+F2).
 # - Login as user chronos, no password is needed.
-# - curl -s https://raw.githubusercontent.com/longsleep/install-pixel/master/install.sh | sudo bash
+# - curl -L -O https://raw.githubusercontent.com/longsleep/install-pixel/master/install.sh
+# - sudo bash install.sh
 
 usage()
 {
@@ -241,6 +242,14 @@ cp /etc/resolv.conf /tmp/urfs/etc/
 echo chrubuntu > /tmp/urfs/etc/hostname
 echo -e "\n127.0.1.1       chrubuntu" >> /tmp/urfs/etc/hosts
 
+sed -i 's/http:\/\/archive./http:\/\/de.archive./g' /tmp/urfs/etc/apt/sources.list
+
+cat > /tmp/urfs/usr/sbin/policy-rc.d << EOF
+#!/bin/sh
+exit 101
+EOF
+chmod a+x /tmp/urfs/usr/sbin/policy-rc.d
+
 echo -e "export DEBIAN_FRONTEND=noninteractive
 apt-get -y update
 apt-get -y dist-upgrade
@@ -266,6 +275,7 @@ adduser user sudo
 chmod a+x /tmp/urfs/install-ubuntu.sh
 chroot /tmp/urfs /bin/bash -c /install-ubuntu.sh
 rm /tmp/urfs/install-ubuntu.sh
+rm /tmp/urfs/usr/sbin/policy-rc.d
 
 crossystem dev_boot_legacy=1 dev_boot_signed_only=1
 
