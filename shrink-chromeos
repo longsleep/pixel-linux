@@ -74,14 +74,14 @@ then
 
   # Do the real work...
   echo "Modifying partition table to make room for Ubuntu."
-  #umount -f /mnt/stateful_partition
+  umount -f /mnt/stateful_partition
 
   # Stateful first
-  #cgpt add -i 1 -b $stateful_start -s $stateful_size -l STATE ${target_disk}
+  cgpt add -i 1 -b $stateful_start -s $stateful_size -l STATE ${target_disk}
   # Now kernc
-  #cgpt add -i 6 -b $kernc_start -s $kernc_size -l KERN-C -t "kernel" ${target_disk}
+  cgpt add -i 6 -b $kernc_start -s $kernc_size -l KERN-C -t "kernel" ${target_disk}
   # Finally rootc
-  #cgpt add -i 7 -b $rootc_start -s $rootc_size -l ROOT-C ${target_disk}
+  cgpt add -i 7 -b $rootc_start -s $rootc_size -l ROOT-C ${target_disk}
 
   echo "Complete. Reboot your system to apply the changes and to repair Chrome OS."
 
@@ -92,7 +92,6 @@ else
   echo "CRoot sizse   : $(($croot_size/1024/2)) MB"
   echo
   echo "Noting to do, did you run this script already?"
-
 
 fi
 
