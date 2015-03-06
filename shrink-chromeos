@@ -1,0 +1,81 @@
+#!/bin/bash
+
+echo "Determining boot support ..."
+LEGACY_LOCATION="`mosys -k eeprom map | grep RW_LEGACY`"
+if [ "$LEGACY_LOCATION" = "" ]; then
+  echo "Error: The system does not seem to support CTRL+L Legacy SeaBIOS booting."
+  exit 1
+fi
+echo "This system supports CTRL+L boot. Good."
+
+target_disk="`rootdev -d -s`"
+echo "Target disk is $target_disk ..."
+
+# Get sizes
+ckern_size="`cgpt show -i 6 -n -s -q ${target_disk}`"
+croot_size="`cgpt show -i 7 -n -s -q ${target_disk}`"
+state_size="`cgpt show -i 1 -n -s -q ${target_disk}`"
+
+# Calc max sizes
+max_ubuntu_size=$(($state_size/1024/1024/2))
+rec_ubuntu_size=$(($max_ubuntu_size - 1))
+
+# If KERN-C and ROOT-C are one, we partition, otherwise assume they're what they need to be
+if [ "$ckern_size" = "1" -o "$croot_size" = "1" ]
+then
+
+  while :
+  do
+    read -p "Enter the size in gigabytes you want to reserve for Ubuntu. Acceptable range is 5 to $max_ubuntu_size  but $rec_ubuntu_size is the recommended maximum: " ubuntu_size
+    if [ ! $ubuntu_size -ne 0 2>/dev/null ]
+    then
+      echo "Please enter numbers only ..."
+      continue
+    fi
+    if [ $ubuntu_size -lt 5 -o $ubuntu_size -gt $max_ubuntu_size ]
+    then
+      echo "That number is out of range. Enter a number 5 through $max_ubuntu_size."
+      continue
+    fi
+    break
+  done
+
+  # We've got our size in GB for ROOT-C so do the math...
+  # Calculate sector size for rootc.
+  rootc_size=$(($ubuntu_size*1024*1024*2))
+
+  # kernc is always 16mb
+  kernc_size=32768
+
+  # New stateful size with rootc and kernc subtracted from original
+  stateful_size=$(($state_size - $rootc_size - $kernc_size))
+
+  # Start stateful at the same spot it currently starts at
+  stateful_start="`cgpt show -i 1 -n -b -q ${target_disk}`"
+
+  # Start kernc at stateful start plus stateful size
+  kernc_start=$(($stateful_start + $stateful_size))
+
+  # Start rootc at kernc start plus kernc size
+  rootc_start=$(($kernc_start + $kernc_size))
+
+  # Do the real work...
+  echo "Modifying partition table to make room for Ubuntu."
+  #umount -f /mnt/stateful_partition
+
+  # Stateful first
+  #cgpt add -i 1 -b $stateful_start -s $stateful_size -l STATE ${target_disk}
+  # Now kernc
+  #cgpt add -i 6 -b $kernc_start -s $kernc_size -l KERN-C -t "kernel" ${target_disk}
+  # Finally rootc
+  #cgpt add -i 7 -b $rootc_start -s $rootc_size -l ROOT-C ${target_disk}
+
+  echo "Complete. Reboot your system to apply the changes."
+
+else
+
+  echo "Noting to do, did you run this script already?"
+
+fi
+
+echo
