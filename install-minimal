@@ -1,0 +1,69 @@
+#!/bin/bash
+
+target_disk=""
+ubuntu_arch="amd64"
+ubuntu_metapackage="ubuntu-minimal"
+ubuntu_version="latest"
+
+target_disk="`rootdev -d -s`"
+echo "Target disk is $target_disk ..."
+
+if [ "$ubuntu_version" = "lts" ]
+then
+  ubuntu_version=`wget --quiet -O - http://changelogs.ubuntu.com/meta-release | grep "^Version:" | grep "LTS" | tail -1 | sed -r 's/^Version: ([^ ]+)( LTS)?$/\1/'`
+  tar_file="http://cdimage.ubuntu.com/ubuntu-core/releases/$ubuntu_version/release/ubuntu-core-$ubuntu_version-core-$ubuntu_arch.tar.gz"
+elif [ "$ubuntu_version" = "latest" ]
+then
+  ubuntu_version=`wget --quiet -O - http://changelogs.ubuntu.com/meta-release | grep "^Version: " | tail -1 | sed -r 's/^Version: ([^ ]+)( LTS)?$/\1/'`
+  tar_file="http://cdimage.ubuntu.com/ubuntu-core/releases/$ubuntu_version/release/ubuntu-core-$ubuntu_version-core-$ubuntu_arch.tar.gz"
+elif [ $ubuntu_version = "dev" ]
+then
+  ubuntu_version=`wget --quiet -O - http://changelogs.ubuntu.com/meta-release-development | grep "^Version: " | tail -1 | sed -r 's/^Version: ([^ ]+)( LTS)?$/\1/'`
+  ubuntu_animal=`wget --quiet -O - http://changelogs.ubuntu.com/meta-release-development | grep "^Dist: " | tail -1 | sed -r 's/^Dist: (.*)$/\1/'`
+  tar_file="http://cdimage.ubuntu.com/ubuntu-core/daily/current/$ubuntu_animal-core-$ubuntu_arch.tar.gz"
+else
+  tar_file="http://cdimage.ubuntu.com/ubuntu-core/releases/$ubuntu_version/release/ubuntu-core-$ubuntu_version-core-$ubuntu_arch.tar.gz"
+fi
+
+echo "Installing Ubuntu ${ubuntu_version} with metapackage ${ubuntu_metapackage}"
+echo "Installing Ubuntu Arch: $ubuntu_arch"
+
+read -p "Press [Enter] to continue..."
+
+rootfs="/tmp/ubuntu-temp-root"
+
+if [ ! -d $rootfs ]
+then
+  mkdir $rootfs
+fi
+
+wget -O - $tar_file | tar xzp -C $rootfs/
+
+cp scripts/install-ubuntu.sh $rootfs
+
+cd $rootfs
+cp -f /etc/resolv.conf etc/
+
+mount -o bind /proc $rootfs/proc
+mount -o bind /dev $rootfs/dev
+mount -o bind /dev/pts $rootfs/dev/pts
+mount -o bind /sys $rootfs/sys
+
+sed -i 's/http:\/\/archive./http:\/\/de.archive./g' etc/apt/sources.list
+
+cat > usr/sbin/policy-rc.d << EOF
+#!/bin/sh
+exit 101
+EOF
+chmod a+x usr/sbin/policy-rc.d
+
+# Make /tmp location usable for chroot.
+mount -o remount exec,suid,dev /tmp
+
+# Chroot.
+chmod a+x install-ubuntu.sh
+chroot $rootfs /bin/bash -c /install-ubuntu.sh
+#rm install-ubuntu.sh
+#rm sbin/policy-rc.d
+
+echo "Complete."
