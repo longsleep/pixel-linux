@@ -24,9 +24,22 @@ rec_ubuntu_size=$(($max_ubuntu_size - 1))
 if [ "$ckern_size" = "1" -o "$croot_size" = "1" ]
 then
 
+  echo "We have to modify the partition table. This will damage Chrome OS but it"
+  echo "will repair itself on the next boot."
+  echo "THIS WILL WIPE ALL YOUR DATA !!!"
+  read -p "Are you sure? (y/N) " -n 1 cont
+  if [ "$cont" != "y" ]; then
+    echo "Aborted."
+    echo
+    exit 1
+  fi
+
+  echo
+
   while :
   do
-    read -p "Enter the size in gigabytes you want to reserve for Ubuntu. Acceptable range is 5 to $max_ubuntu_size  but $rec_ubuntu_size is the recommended maximum: " ubuntu_size
+    echo "Enter the size in gigabytes you want to reserve for Ubuntu."
+    read -p "5-$max_ubuntu_size, $rec_ubuntu_size recommended maximum: " ubuntu_size
     if [ ! $ubuntu_size -ne 0 2>/dev/null ]
     then
       echo "Please enter numbers only ..."
@@ -70,11 +83,16 @@ then
   # Finally rootc
   #cgpt add -i 7 -b $rootc_start -s $rootc_size -l ROOT-C ${target_disk}
 
-  echo "Complete. Reboot your system to apply the changes."
+  echo "Complete. Reboot your system to apply the changes and to repair Chrome OS."
 
 else
 
+  echo "Stateful size : $(($state_size/1024/2)) MB"
+  echo "CKern size    : $(($ckern_size/1024/2)) MB"
+  echo "CRoot sizse   : $(($croot_size/1024/2)) MB"
+  echo
   echo "Noting to do, did you run this script already?"
+
 
 fi
 
