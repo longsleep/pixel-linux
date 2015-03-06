@@ -1,7 +1,44 @@
 ## Assumptions
 
- - Already in developer mode
+ - Chromebook Pixel is already in developer mode.
+ - You are willing to shink Chrome OS (this will remove all data).
 
+So just get this repository and extract it into ~/Downloads. You need to be able
+to run the various scripts shipped in this repository. Afterwards Ubuntu is
+installed alongside to Chrome OS.
+
+## Shrink Chrome OS
+
+  sudo bash shrink-chromeos
+
+## Install Ubuntu
+
+  The Chrome Book Pixel hardware works out of the box with Ubuntu 14.10. No
+  extra equipment is required. This repository provides all the gear to install
+  Ubuntu along side with Chrome OS. During this process Chrome OS will be
+  shrinked and will reset all its data. You have been warned!
+
+  sudo bash install-minimal
+
+## Kernel settings
+
+  - Add line `i915 modeset=1` into /etc/modules.
+  - Add `tpm_tis.force=1 tpm_tis.interrupts=0` to GRUB_CMDLINE_LINUX_DEFAULT in
+    /etc/default/grub and run `sudo update-grub` afterwards.
+
+## Disable bluetooth on startup
+
+  Edit /etc/rc.local and add `rfkill block bluetooth` before the `exit 0`.
+
+## Known issues
+
+  - Chromebooks forget about Dev mode when completely out of battery. This is
+    very annoying. See [here](http://dev.chromium.org/chromium-os/developer-information-for-chrome-os-devices/workaround-for-battery-discharge-in-dev-mode) for details.
+
+## Dual boot with Chrome OS
+
+  So now we have Ubuntu. Chrome OS is still there and functional. You can boot
+  it from the boot screen with CTRL+D.
 
 ## Install Chromebrew
 
@@ -27,40 +64,6 @@
   It supports Git directly (but do no use that) as it works great together with
   commandline Git. I use the Monokai color theme there as this is the theme i
   usually have in Sublime Text too.
-
-## Shrink Chrome OS
-
-  sudo bash shrink-chromeos
-
-## Install Ubuntu
-
-  The Chrome Book Pixel hardware works out of the box with Ubuntu 14.10. No
-  extra equipment is required. This repository provides all the gear to install
-  Ubuntu along side with Chrome OS. During this process Chrome OS will be
-  shrinked and will reset all its data. You have been warned!
-
-  sudo bash install-minimal
-
-## Kernel settings
-
-  - Add line `i915 modeset=1` into /etc/modules.
-  - Add `tpm_tis.force=1 tpm_tis.interrupts=0` to GRUB_CMDLINE_LINUX_DEFAULT in
-    /etc/default/grub and run `sudo update-grub` afterwards.
-
-
-## Disable bluetooth on startup
-
-  Edit /etc/rc.local and add `rfkill block bluetooth` before the `exit 0`.
-
-## Known issues
-
-  - Chromebooks forget about Dev mode when completely out of battery. This is
-    very annoying. See [here](http://dev.chromium.org/chromium-os/developer-information-for-chrome-os-devices/workaround-for-battery-discharge-in-dev-mode) for details.
-
-
-
-
-
 
 
 
