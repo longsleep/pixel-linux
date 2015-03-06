@@ -63,7 +63,16 @@ mount -o remount exec,suid,dev /tmp
 # Chroot.
 chmod a+x install-ubuntu.sh
 chroot $rootfs /bin/bash -c /install-ubuntu.sh
-#rm install-ubuntu.sh
-#rm sbin/policy-rc.d
 
-echo "Complete."
+# Make sure everything can boot.
+crossystem dev_boot_legacy=1 dev_boot_signed_only=1
+
+echo -e "
+Installation is complete! On reboot at the dev mode screen, you can press
+CTRL+L to boot Ubuntu or CTRL+D to boot Chrome OS. The Ubuntu login is:
+
+  Username:  user
+  Password:  user
+
+Enjoy!
+"
