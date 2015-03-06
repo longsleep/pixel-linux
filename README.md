@@ -19,5 +19,5 @@
 
 ## Install Chrome Dev editor
 
-  [Chrome Dev Editor](https://chrome.google.com/webstore/detail/chrome-dev-editor-develop/pnoffddplpippgcfjdhbmhkofpnaalpg) is a Chrome App which works offline and provides you a Graphical Text editor. It supports Git directly and works great together with commandline Git. I use the Monokai color theme there as this is the theme i usually have in Sublime Text too.
+  [Chrome Dev Editor](https://chrome.google.com/webstore/detail/chrome-dev-editor-develop/pnoffddplpippgcfjdhbmhkofpnaalpg) is a Chrome App which works offline and provides you a Graphical Text editor. It supports Git directly (but do no use that) as it works great together with commandline Git. I use the Monokai color theme there as this is the theme i usually have in Sublime Text too.
 
