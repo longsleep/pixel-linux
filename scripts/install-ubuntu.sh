@@ -31,7 +31,7 @@ mkdir -p $rootfs/boot
 mount $boot_partition $rootfs/boot
 
 echo "Syncing minimal system to encrypted disc ..."
-rsync -rax --exclude="/proc" --exclude="/dev" --exclude="/sys" --exclude="/tmp" --exclude="/install-ubuntu.sh" / $rootfs/
+rsync -rax --exclude="/proc" --exclude="/dev" --exclude="/sys" --exclude="/tmp" --exclude="/install-ubuntu.sh" --exclude="/etc/resolv.conf" / $rootfs/
 
 mkdir $rootfs/proc
 mkdir $rootfs/dev
