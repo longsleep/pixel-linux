@@ -30,6 +30,17 @@ installed alongside to Chrome OS.
 
   Edit /etc/rc.local and add `rfkill block bluetooth` before the `exit 0`.
 
+## Hot keys
+
+  - I use the CTRL key to rebind audio hotkeys in keyboard settings.
+  - For keyboard backlight i use a custom trigger CTRL+TAB with my
+    `pixel-keyboard-brightness` from my [bin-scripts](https://github.com/longsleep/bin-scripts) repository.
+  - Display backlight keys can be bound to a custom action using `xdotool`.
+    Install `xdotool` with apt-get and bind `xdotool key XF86MonBrightnessUp`
+    and `xdotool key XF86MonBrightnessDown` to the designated keys within
+    keyboard settings.
+
+
 ## Known issues
 
   - Chromebooks forget about Dev mode when completely out of battery. This is
