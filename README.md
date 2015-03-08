@@ -1,3 +1,11 @@
+Install Ubuntu 14.10 on Chromebook Pixel
+========================================
+
+With this instructions you get a Ubuntu 14.10 on Chromebook Pixel, installed
+on the SSD without removing Chrome OS. This means dual boot from development
+mode prompt to either Chrome OS or Ubuntu. Alle relevant components work on
+Ubuntu as you would expect it, including Bluetooth, touch and Wifi.
+
 ## Assumptions
 
  - Chromebook Pixel is already in developer mode.
@@ -18,7 +26,7 @@ installed alongside to Chrome OS.
   Ubuntu along side with Chrome OS. During this process Chrome OS will be
   shrinked and will reset all its data. You have been warned!
 
-  sudo bash install-minimal
+    sudo bash install-minimal
 
 ## Kernel settings
 
@@ -44,7 +52,8 @@ installed alongside to Chrome OS.
 ## Known issues
 
   - Chromebooks forget about Dev mode when completely out of battery. This is
-    very annoying. See [here](http://dev.chromium.org/chromium-os/developer-information-for-chrome-os-devices/workaround-for-battery-discharge-in-dev-mode) for details.
+    very annoying. See [here](http://dev.chromium.org/chromium-os/developer-information-for-chrome-os-devices/workaround-for-battery-discharge-in-dev-mode) for
+    details.
 
 ## Dual boot with Chrome OS
 
@@ -103,6 +112,9 @@ installed alongside to Chrome OS.
   - Only has USB2 / no USB3.
   - Keyboard is missing some keys, requires extra Kernal patches to get
     POS1, END, PAGE-UP/DOWN.
+  - Need to keep Chrome OS on the SSD to be able to recover from complete
+    power loss. See [here](http://dev.chromium.org/chromium-os/developer-information-for-chrome-os-devices/workaround-for-battery-discharge-in-dev-mode) for
+    reasons.
 
   To sum this up, the Chromebook Pixel is the platform of choice and can only
   be recommended if you are willing to work around the issues to get Linux on
@@ -110,3 +122,5 @@ installed alongside to Chrome OS.
   a lot longer. The Pixel is almost flawless, now if it had a 512GB SSD and a
   customizeable EFI BIOS .. well dreams.
 
+--
+Simon Eisenmann
