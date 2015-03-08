@@ -52,8 +52,21 @@ sysfs. I might add this to my Kernel patches eventually. THis patch has been
 submitted to the upstream Kernel [here](https://lkml.org/lkml/2015/2/2/214).
 These patches require a modified ectool which seems to be available too.
 
-	 git clone git://git.collabora.co.uk/git/user/javier/ec.git mainline-ioctl
-
 ## Building ectool
 
-	make BOARD=link util/ectool
+	git clone git://git.collabora.co.uk/git/user/javier/ec.git
+	cd ec
+	make BOARD=link CROSS_COMPILE= HOST_CROSS_COMPILE= build/link/util/ectool
+	sudo ./build/link/util/ectool version
+
+## Controlling the fan with ectool
+
+Once you have ectool built for Linux it can be used to get control on the fan.
+
+	sudo ./build/link/util/ectool fanduty 0
+	sudo ./build/link/util/ectool fanduty 100
+	sudo ./build/link/util/ectool autofanctrl on
+
+## Firmware event log
+
+	http://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/chromebook-pixel
