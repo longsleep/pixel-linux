@@ -56,6 +56,7 @@ These patches require a modified ectool which seems to be available too.
 
 	git clone git://git.collabora.co.uk/git/user/javier/ec.git
 	cd ec
+	git checkout mainline-ioctl
 	make BOARD=link CROSS_COMPILE= HOST_CROSS_COMPILE= build/link/util/ectool
 	sudo ./build/link/util/ectool version
 
