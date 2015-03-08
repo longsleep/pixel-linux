@@ -36,10 +36,10 @@ installed alongside to Chrome OS.
   - For keyboard backlight i use a custom trigger CTRL+TAB with my
     `pixel-keyboard-brightness` from my [bin-scripts](https://github.com/longsleep/bin-scripts) repository.
   - Display backlight keys can be bound to a custom action using `xdotool`.
-    Install `xdotool` with apt-get and bind `xdotool key XF86MonBrightnessUp`
-    and `xdotool key XF86MonBrightnessDown` to the designated keys within
-    keyboard settings.
-
+    Install `xdotool` with apt-get and bind `xdotool key --clearmodifies XF86MonBrightnessUp`
+    and `xdotool key --clearmodifies XF86MonBrightnessDown` to the designated
+    keys within keyboard settings. I have a script for this in my bin-scripts
+    repository as well.
 
 ## Known issues
 
@@ -51,7 +51,7 @@ installed alongside to Chrome OS.
   So now we have Ubuntu. Chrome OS is still there and functional. You can boot
   it from the boot screen with CTRL+D.
 
-## Install Chromebrew
+## Install Chromebrew into Chrome OS
 
   [Chromebrew](http://skycocker.github.io/chromebrew/) is a package manager for
   Chrome OS which allows to easily install various tools into your Chrome OS
@@ -68,7 +68,7 @@ installed alongside to Chrome OS.
 
   Yay!
 
-## Install Chrome Dev editor
+## Install Chrome Dev editor (works on both Ubuntu and Chrome OS)
 
   [Chrome Dev Editor](https://chrome.google.com/webstore/detail/chrome-dev-editor-develop/pnoffddplpippgcfjdhbmhkofpnaalpg)
   is a Chrome App which works offline and provides you a Graphical Text editor.
