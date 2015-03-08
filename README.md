@@ -91,7 +91,8 @@ installed alongside to Chrome OS.
   main laptop for development when i am at home and travelling. Below you find
   a list of the best and worst items which are relevant to me.
 
-  ### Pro's
+### Pro's
+
   + Great QWERTY keyboard which has all be buttons at the right place and in
     the correct size to type quickly and fluidly.
   + Great, large touchpad.
@@ -104,7 +105,8 @@ installed alongside to Chrome OS.
   + Good 720p UVC camera.
   + Reasonable CPU performance (14367.41 BogoMIPS).
 
-  ### Con's
+### Con's
+
   - Gets rather hot (+loud fan) when CPU and GPU is loaded.
   - Moderate battery live (5 to 6 hours at best).
   - No secure boot / have to keep Chrome OS in dev mode.
@@ -116,11 +118,11 @@ installed alongside to Chrome OS.
     power loss. See [here](http://dev.chromium.org/chromium-os/developer-information-for-chrome-os-devices/workaround-for-battery-discharge-in-dev-mode) for
     reasons.
 
-  To sum this up, the Chromebook Pixel is the platform of choice and can only
-  be recommended if you are willing to work around the issues to get Linux on
-  it and all. Usually in other similar 13" Ultrabooks the list of problems is
-  a lot longer. The Pixel is almost flawless, now if it had a 512GB SSD and a
-  customizeable EFI BIOS .. well dreams.
+To sum this up, the Chromebook Pixel is the platform of choice and can only
+be recommended if you are willing to work around the issues to get Linux on
+it and all. Usually in other similar 13" Ultrabooks the list of problems is
+a lot longer. The Pixel is almost flawless, now if it had a 512GB SSD and a
+customizeable EFI BIOS .. well dreams.
 
 --
 Simon Eisenmann
