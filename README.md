@@ -17,7 +17,7 @@ installed alongside to Chrome OS.
 
 ## Shrink Chrome OS
 
-  sudo bash shrink-chromeos
+    sudo bash shrink-chromeos
 
 ## Install Ubuntu
 
