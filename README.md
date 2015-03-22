@@ -39,6 +39,12 @@ data. You have been warned!
 
   Edit /etc/rc.local and add `rfkill block bluetooth` before the `exit 0`.
 
+## Dim screen on startup
+
+  The Pixel's screen is very bright and boots up at full intensity. So I find
+  it a good idea to dim it on startup. Edit /etc/rc.local and add
+  `echo 2800 > /sys/class/backlight/intel_backlight/brightness`.
+
 ## Hot keys
 
   - I use the CTRL key to rebind audio hotkeys in keyboard settings.
