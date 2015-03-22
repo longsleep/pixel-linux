@@ -12,8 +12,11 @@ Ubuntu as you would expect it, including Bluetooth, touch and Wifi.
  - You are willing to shink Chrome OS (this will remove all data).
 
 So just get this repository and extract it into ~/Downloads. You need to be able
-to run the various scripts shipped in this repository. Afterwards Ubuntu is
-installed alongside to Chrome OS.
+to run the various scripts shipped in this repository.
+
+This repository provides all the gear to install Ubuntu along side with Chrome
+OS. During this process Chrome OS will be shrinked and will reset all its
+data. You have been warned!
 
 ## Shrink Chrome OS
 
@@ -22,9 +25,7 @@ installed alongside to Chrome OS.
 ## Install Ubuntu
 
   The Chrome Book Pixel hardware works out of the box with Ubuntu 14.10. No
-  extra equipment is required. This repository provides all the gear to install
-  Ubuntu along side with Chrome OS. During this process Chrome OS will be
-  shrinked and will reset all its data. You have been warned!
+  extra equipment is required.
 
     sudo bash install-minimal
 
