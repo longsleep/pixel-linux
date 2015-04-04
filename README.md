@@ -92,6 +92,17 @@ data. You have been warned!
   commandline Git. I use the Monokai color theme there as this is the theme i
   usually have in Sublime Text too.
 
+## Use Kernel 4.0
+
+  I recommend running the Pixel with Linux Kernel 4.0 as it brings lots of
+  changes and improvements for the Intel Platform. I have a Kernel patches
+  tree and configuration for the Chromebook Pixel in my [Kernel patches](https://github.com/longsleep/linux_patches/tree/pixel) repository.
+
+## Extra packages
+
+  I also have a [ppa for the Pixel on Ubuntu](https://launchpad.net/~longsleep/+archive/ubuntu/pixel-extras). This adds some extra functionality and tools i use of the
+  time. Most of it requires Kernel 4.0 though.
+
 ## My result/ recommendation
 
   For me the Chromebook Pixel is working great with Linux. I am using it as
