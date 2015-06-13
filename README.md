@@ -1,10 +1,16 @@
-Install Ubuntu 14.10 on Chromebook Pixel
-========================================
+Install Ubuntu 14.10 on Chromebook Pixel (2013)
+===============================================
 
-With this instructions you get a Ubuntu 14.10 on Chromebook Pixel, installed
+With this instructions you get a Ubuntu 15.04 on Chromebook Pixel, installed
 on the SSD without removing Chrome OS. This means dual boot from development
 mode prompt to either Chrome OS or Ubuntu. Alle relevant components work on
 Ubuntu as you would expect it, including Bluetooth, touch and Wifi.
+
+This guide is for the Chromebook Pixel from 2013. Most of the things here
+will work for the Pixel 2015 as well. You will have issues with the Kernel as
+it is lacking some drivers required for the newer Pixel. If anyone wants to
+send me a Pixel 2015 get in touch by email (simon AT longsleep DOT org) and i
+will see what i can do.
 
 ## Assumptions
 
@@ -24,7 +30,7 @@ data. You have been warned!
 
 ## Install Ubuntu
 
-  The Chrome Book Pixel hardware works out of the box with Ubuntu 14.10. No
+  The Chrome Book Pixel hardware works out of the box with Ubuntu 15.04. No
   extra equipment is required.
 
     sudo bash install-minimal
@@ -92,16 +98,16 @@ data. You have been warned!
   commandline Git. I use the Monokai color theme there as this is the theme i
   usually have in Sublime Text too.
 
-## Use Kernel 4.0
+## Use Kernel 4.1
 
-  I recommend running the Pixel with Linux Kernel 4.0 as it brings lots of
+  I recommend running the Pixel with Linux Kernel 4.1 as it brings lots of
   changes and improvements for the Intel Platform. I have a Kernel patches
   tree and configuration for the Chromebook Pixel in my [Kernel patches](https://github.com/longsleep/linux_patches/tree/pixel) repository.
 
 ## Extra packages
 
   I also have a [ppa for the Pixel on Ubuntu](https://launchpad.net/~longsleep/+archive/ubuntu/pixel-extras). This adds some extra functionality and tools i use of the
-  time. Most of it requires Kernel 4.0 though.
+  time. Most of it requires Kernel 4.1 though.
 
 ## My result/ recommendation
 
