@@ -142,6 +142,13 @@ data. You have been warned!
     power loss. See [here](http://dev.chromium.org/chromium-os/developer-information-for-chrome-os-devices/workaround-for-battery-discharge-in-dev-mode) for
     reasons.
 
+### Additional things
+
+  - Check if we can improve battery life with Kernel 4.2 and
+    by setting `pcie_aspm=force i915.enable_fbc=1 i915.enable_rc6=7`
+    Kernel parameters. Also check `i915.enable_psr=1` parameter.
+
+
 To sum this up, the Chromebook Pixel is the platform of choice and can only
 be recommended if you are willing to work around the issues to get Linux on
 it and all. Usually in other similar 13" Ultrabooks the list of problems is
