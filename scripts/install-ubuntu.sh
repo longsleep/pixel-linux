@@ -86,6 +86,8 @@ usermod -a -G adm,cdrom,lpadmin,sudo,dip,plugdev user
 " > third_stage
 chmod a+x third_stage
 
+cp /etc/resolv.conf etc/resolv.conf
+
 chroot $rootfs /bin/bash -c /third_stage
 
 echo "Check the created system now."
