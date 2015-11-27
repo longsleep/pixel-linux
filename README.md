@@ -3,26 +3,26 @@ Install Ubuntu 14.10 on Chromebook Pixel (2013)
 
 With this instructions you get a Ubuntu 15.04 on Chromebook Pixel, installed
 on the SSD without removing Chrome OS. This means dual boot from development
-mode prompt to either Chrome OS or Ubuntu. Alle relevant components work on
+mode prompt to either Chrome OS or Ubuntu. All relevant components work on
 Ubuntu as you would expect it, including Bluetooth, touch and Wifi.
 
 This guide is for the Chromebook Pixel from 2013. Most of the things here
 will work for the Pixel 2015 as well. You will have issues with the Kernel as
 it is lacking some drivers required for the newer Pixel. If anyone wants to
-send me a Pixel 2015 get in touch by email (simon AT longsleep DOT org) and i
-will see what i can do.
+send me a Pixel 2015 get in touch by email (simon AT longsleep DOT org) and I
+will see what I can do.
 
 ## Assumptions
 
  - Chromebook Pixel is already in developer mode.
- - You are willing to shink Chrome OS (this will remove all data).
+ - You are willing to shrink Chrome OS (this will remove all data).
 
 So just get this repository and extract it into ~/Downloads. You need to be able
 to run the various scripts shipped in this repository.
 
 This repository provides all the gear to install Ubuntu along side with Chrome
-OS. During this process Chrome OS will be shrinked and will reset all its
-data. You have been warned!
+OS. During this process Chrome OS will be shrunk and will reset all its data.
+You have been warned!
 
 ## Shrink Chrome OS
 
@@ -54,7 +54,7 @@ data. You have been warned!
 ## Hot keys
 
   - I use the CTRL key to rebind audio hotkeys in keyboard settings.
-  - For keyboard backlight i use a custom trigger CTRL+TAB with my
+  - For keyboard backlight I use a custom trigger CTRL+TAB with my
     `pixel-keyboard-brightness` from my [bin-scripts](https://github.com/longsleep/bin-scripts) repository.
   - Display backlight keys can be bound to a custom action using `xdotool`.
     Install `xdotool` with apt-get and bind `xdotool key --clearmodifies XF86MonBrightnessUp`
@@ -95,7 +95,7 @@ data. You have been warned!
   [Chrome Dev Editor](https://chrome.google.com/webstore/detail/chrome-dev-editor-develop/pnoffddplpippgcfjdhbmhkofpnaalpg)
   is a Chrome App which works offline and provides you a Graphical Text editor.
   It supports Git directly (but do no use that) as it works great together with
-  commandline Git. I use the Monokai color theme there as this is the theme i
+  commandline Git. I use the Monokai color theme there as this is the theme I
   usually have in Sublime Text too.
 
 ## Use Kernel 4.1
