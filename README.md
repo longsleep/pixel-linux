@@ -37,7 +37,7 @@ You have been warned!
 
 ## Kernel settings
 
-  - Add line `i915 modeset=1` into /etc/modules.
+  - Add line `i915.modeset=1` into /etc/modules.
   - Add `tpm_tis.force=1 tpm_tis.interrupts=0` to GRUB_CMDLINE_LINUX_DEFAULT in
     /etc/default/grub and run `sudo update-grub` afterwards.
 
